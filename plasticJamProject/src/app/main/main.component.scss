@@ -1,0 +1,227 @@
+.mainComponentConteiner {
+  position: relative;
+  width: 1440px;
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  b {
+    font-weight: bolder;
+  }
+  font-family: "Montserrat", sans-serif;
+}
+.container {
+  width: 100%;
+  padding: 0 9%;
+}
+.phoneBorder {
+  position: absolute;
+  left: 64.71%;
+  top: 5%;
+  border-radius: 30px;
+  border: none;
+  background: #fcfcfc;
+}
+.phone {
+  position: absolute;
+  left: 65.04%;
+  top: calc(5% + 5px);
+  background: linear-gradient(
+    270deg,
+    rgba(255, 255, 255, 0.03) 0%,
+    rgba(255, 255, 255, 0.03) 95.21%,
+    rgba(0, 0, 0, 0.03) 100%
+  );
+  border: none;
+}
+.phoneInner {
+  position: absolute;
+  left: calc(65% + 12.5px);
+  top: calc(5% + 15px);
+  bottom: 58.34%;
+  border-radius: 30px;
+}
+.shadow {
+  position: absolute;
+  width: 321px;
+  height: 19px;
+  left: 65%;
+  top: 77%;
+  z-index: -1;
+  background: #000000;
+  opacity: 0.3;
+  filter: blur(22px);
+}
+
+svg path {
+  z-index: -1;
+  position: absolute;
+}
+.flexColumn {
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  position: absolute;
+  top: 0px;
+  padding: 0 9%;
+
+  svg {
+    margin-top: 34px;
+  }
+  div {
+    margin-top: 50px;
+    p {
+      margin: 0;
+      padding: 0;
+      font-size: 48px;
+      line-height: 59px;
+      color: #ffffff;
+    }
+  }
+  p {
+    font-size: 20px;
+    line-height: 28px;
+    color: #ffffff;
+  }
+  button {
+    position: absolute;
+    width: 154px;
+    height: 56px;
+    font-size: 16px;
+    top: 351px;
+    color: #3a80ba;
+    background: #ffffff;
+    border-radius: 8px;
+    outline: none;
+    cursor: pointer;
+    border: none;
+  }
+}
+.mainBlock {
+  div p {
+    font-size: 32px;
+    line-height: 39px;
+    text-align: center;
+    color: #1a1a1a;
+  }
+
+  p {
+    font-size: 20px;
+    line-height: 28px;
+    text-align: center;
+    color: #7e7e7e;
+  }
+}
+.block {
+  width: 30%;
+  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.16);
+  border-radius: 32px;
+  background-image: url("/src/assets/pic1.jpg");
+  h5 {
+    margin: 10% 0 0 0;
+    padding: 0;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 29px;
+    text-align: center;
+    color: #1a1a1a;
+  }
+  p {
+    margin: 8% 0 8% 0;
+    padding: 0;
+    font-size: 16px;
+    line-height: 23px;
+    text-align: center;
+    color: #7e7e7e;
+  }
+  .pic {
+    margin-top: 48px;
+    align-self: center;
+    width: 106px;
+    height: 96px;
+  }
+}
+.flexRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.footerSvg {
+  margin-top: 10%;
+}
+.footer {
+  position: absolute;
+  bottom: 25px;
+  padding: 0 9%;
+  display: flex;
+  flex-direction: row;
+  gap: 4vw;
+  align-content: center;
+  justify-content: stretch;
+
+  @media (max-width: 600px) {
+    padding: 0% 4%;
+  }
+  height: 57px;
+  display: flex;
+  flex-direction: row;
+  gap: 4vw;
+  align-content: center;
+  justify-content: space-between;
+  color: white;
+  background-color: transparent;
+
+  svg {
+    margin: 14px 0;
+  }
+
+  .rights {
+    position: relative;
+    left: 165px;
+    @media (max-width: 600px) {
+      left: 0px;
+      position: static;
+    }
+  }
+  .copyrights {
+    position: relative;
+    right: -450px;
+  }
+  @media (max-width: 600px) {
+    font-size: 16px;
+  }
+}
+.subscribeInput {
+  position: absolute;
+  bottom: 90px;
+  left: 30%;
+  width: 579px;
+  height: 64px;
+  background: white;
+  border: 1px solid #f1f1f1;
+  box-sizing: border-box;
+  border-radius: 10px;
+  align-self: center;
+  justify-self: center;
+  font-size: 16px;
+  outline: none;
+  padding-left: 10px;
+  color: #b9b9b9;
+}
+.subscribeButton {
+  position: absolute;
+  bottom: 94px;
+  left: 57.7%;
+  width: 176px;
+  height: 56px;
+  background: #3a80ba;
+  border-radius: 8px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  color: #ffffff;
+}
