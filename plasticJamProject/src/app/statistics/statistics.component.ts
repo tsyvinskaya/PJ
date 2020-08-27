@@ -51,6 +51,5 @@ export class StatisticsComponent implements OnInit {
 
   goToDetail(id, name, lastname){
   this.router.navigateByUrl(this.router.createUrlTree(['/user/', id]) );
-  this.dataService.userName (name + " " +lastname);
 }
 }
