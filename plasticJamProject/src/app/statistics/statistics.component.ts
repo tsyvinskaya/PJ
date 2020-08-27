@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { DataServiceService} from '../data-service.service';
+import { Users} from '../user';
 
 @Component({
   selector: 'app-statistics',
@@ -9,30 +10,20 @@ import { DataServiceService} from '../data-service.service';
 })
 export class StatisticsComponent implements OnInit {
 
-  Db = [];
+  Db:Users;
   pages;
   displayedColumns: string[] = ['Id', 'First name', 'Last name', 'Email', 'Gender', 'IP address', 'Total clicks', 'Total page views'];
 
   constructor(private router: Router, private route: ActivatedRoute,private dataService: DataServiceService) { }
 
   ngOnInit(): void {
-    this.loadDb(1);
-  }
-
-  loadDb(arg) {
-    let xhr = new XMLHttpRequest();
-    let url = `http://localhost:3001/api/users?page=${arg}&limit=50`;
-    xhr.open('GET', url, true);
-    xhr.send();
-    let that = this;
-    xhr.onload = function () {
-      that.Db = JSON.parse(this.response).users;
-      that.pages = new Array(JSON.parse(this.response).pages);
-    };
+    this.dataService.getDb(1)
+    .subscribe(data => (this.Db = data, this.pages = new Array(data.pages))) 
   }
 
   loadNewPage($event: any) {
-    this.loadDb($event.target.innerHTML);
+    this.dataService.getDb($event.target.innerHTML)
+    .subscribe(data => (this.Db = data))
   }
 
   next() {

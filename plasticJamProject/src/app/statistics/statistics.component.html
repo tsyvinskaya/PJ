@@ -23,7 +23,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let users of Db; let i = index" (click)="goToDetail(users.id, users.first_name,users.last_name)">
+      <tr *ngFor="let users of Db.users; let i = index" (click)="goToDetail(users.id, users.first_name,users.last_name)">
         <td>{{users.id}}</td>
         <td>{{users.first_name}}</td>
         <td>{{users.last_name}}</td>
