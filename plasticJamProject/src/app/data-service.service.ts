@@ -9,19 +9,11 @@ import { UsersStat } from './api-stat-interface';
   providedIn: 'root'
 })
 export class DataServiceService {
-  name;
+
   private apiUrl = 'http://localhost:3001/api/users';
+  private detailUrl = `http://localhost:3001/api/statistics/`;
 
   constructor(private http: HttpClient) { }
-
-
-  set userName(value) {
-    this.name = value;
-  }
-
-  get getuserName() {
-    return this.name;
-  }
 
   getDb(x): Observable<Users> {
     const params = new HttpParams({
@@ -32,6 +24,10 @@ export class DataServiceService {
       }
     });
     return this.http.get<Users>(this.apiUrl, { params: params });
+  }
+
+  getUserDetail(idx): Observable<UsersStat> {
+    return this.http.get<UsersStat>(`${this.detailUrl}${idx}`);
   }
 
 }

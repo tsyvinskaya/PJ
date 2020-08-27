@@ -1,6 +1,7 @@
 import { Component, OnInit, DoCheck } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DataServiceService } from '../data-service.service';
+import { UsersStat} from '../api-stat-interface';
 
 @Component({
   selector: 'app-user-detail',
@@ -9,44 +10,37 @@ import { DataServiceService } from '../data-service.service';
 })
 export class UserDetailComponent implements OnInit, DoCheck {
 
-  user = [];
+  user:UsersStat;
+  userName: string;
   page_views = [];
   clicks = [];
   maxViews: number;
   maxClicks: number;
   ViewPath: string;
   ClicksPath: string;
-  userName: string;
   clientWidth;
 
   constructor(private route: ActivatedRoute, private dataService: DataServiceService) { }
 
-  ngOnInit(): void { this.getUser(); this.getUserName() }
+  ngOnInit(): void { this.getUser()}
 
   ngDoCheck(): void { this.getviews(); this.setPath() }
 
-  getUserName() {
-    this.userName = this.dataService.getuserName;
-  }
-
   getUser(): void {
     const id = +this.route.snapshot.paramMap.get('id');
-    let url = `http://localhost:3001/api/statistics/${id}`;
-    let xhr = new XMLHttpRequest();
-    xhr.open('GET', url, true);
-    xhr.send();
-    let that = this;
-    xhr.onload = function () {
-      that.user = JSON.parse(this.response).data;
-    }
+    this.dataService.getUserDetail(id)
+    .subscribe (data=>this.user=data);
+
+    this.dataService.getDb(1)
+    .subscribe(data => (this.userName=data.users[id-1].first_name+" "+data.users[id-1].last_name));
   };
 
   getviews() {
-    for (let i = 0; i < this.user.length; i++) {
-      this.page_views.unshift(this.user[i].page_views);
+    for (let i = 0; i < this.user.data.length; i++) {
+      this.page_views.unshift(this.user.data[i].page_views);
     }
-    for (let i = 0; i < this.user.length; i++) {
-      this.clicks.unshift(this.user[i].clicks);
+    for (let i = 0; i < this.user.data.length; i++) {
+      this.clicks.unshift(this.user.data[i].clicks);
     }
     this.maxViews = Math.max.apply(null, this.page_views);
     this.maxClicks = Math.max.apply(null, this.clicks);
